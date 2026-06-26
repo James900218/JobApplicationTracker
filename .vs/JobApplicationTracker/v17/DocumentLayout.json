@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\JobApplicationTracker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F10DF898-DF66-41ED-BF8A-51B30B819677}|JobApplicationTracker.csproj|c:\\projects\\jobapplicationtracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F10DF898-DF66-41ED-BF8A-51B30B819677}|JobApplicationTracker.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F10DF898-DF66-41ED-BF8A-51B30B819677}|JobApplicationTracker.csproj|c:\\projects\\jobapplicationtracker\\jobapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F10DF898-DF66-41ED-BF8A-51B30B819677}|JobApplicationTracker.csproj|solutionrelative:jobapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F10DF898-DF66-41ED-BF8A-51B30B819677}|JobApplicationTracker.csproj|c:\\projects\\jobapplicationtracker\\applicationtracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F10DF898-DF66-41ED-BF8A-51B30B819677}|JobApplicationTracker.csproj|solutionrelative:applicationtracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projects\\JobApplicationTracker\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Projects\\JobApplicationTracker\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-09T00:59:55.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationTracker.cs",
+              "DocumentMoniker": "C:\\Projects\\JobApplicationTracker\\ApplicationTracker.cs",
+              "RelativeDocumentMoniker": "ApplicationTracker.cs",
+              "ToolTip": "C:\\Projects\\JobApplicationTracker\\ApplicationTracker.cs",
+              "RelativeToolTip": "ApplicationTracker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T12:07:42.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JobApplication.cs",
+              "DocumentMoniker": "C:\\Projects\\JobApplicationTracker\\JobApplication.cs",
+              "RelativeDocumentMoniker": "JobApplication.cs",
+              "ToolTip": "C:\\Projects\\JobApplicationTracker\\JobApplication.cs",
+              "RelativeToolTip": "JobApplication.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T13:52:09.39Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

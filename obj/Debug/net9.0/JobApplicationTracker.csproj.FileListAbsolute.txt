@@ -1,0 +1,14 @@
+C:\Projects\JobApplicationTracker\bin\Debug\net9.0\JobApplicationTracker.exe
+C:\Projects\JobApplicationTracker\bin\Debug\net9.0\JobApplicationTracker.deps.json
+C:\Projects\JobApplicationTracker\bin\Debug\net9.0\JobApplicationTracker.runtimeconfig.json
+C:\Projects\JobApplicationTracker\bin\Debug\net9.0\JobApplicationTracker.dll
+C:\Projects\JobApplicationTracker\bin\Debug\net9.0\JobApplicationTracker.pdb
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.AssemblyInfoInputs.cache
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.AssemblyInfo.cs
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.csproj.CoreCompileInputs.cache
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.dll
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\refint\JobApplicationTracker.dll
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.pdb
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.genruntimeconfig.cache
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\ref\JobApplicationTracker.dll
