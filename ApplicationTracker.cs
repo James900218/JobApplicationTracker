@@ -11,10 +11,15 @@ namespace JobApplicationTracker
     public class ApplicationsTracker
     {
         // list holding all the objects of type "JobApplication"
-        public List<JobApplication> Jobs = new();
+        private List<JobApplication> Jobs = new();
 
         // Initializing an ID so that jobs can be tracked easily
         public int applicationID = 1;
+
+        public List<JobApplication> GetApplications()
+        {
+            return Jobs;
+        }
 
         // Function to add new applications into the list
         public void AddApplication(string _companyName, string _positionName, DateOnly _dateTime, string _notes)

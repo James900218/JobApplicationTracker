@@ -31,7 +31,9 @@ class Program
             Console.WriteLine("4: Edit Application");
             Console.WriteLine("5: Save");
             Console.WriteLine("6: Load");
-            Console.WriteLine("7: Exit");
+            Console.WriteLine("7: More Options");
+            Console.WriteLine("8: Exit");
+
 
             string? choiceInput = Console.ReadLine();
 
@@ -61,6 +63,15 @@ class Program
                     break;
 
                 case "7":
+                    Console.WriteLine("1: Search");
+                    Console.WriteLine("2: Filter");
+                    Console.WriteLine("3: Sort");
+                    Console.WriteLine("4: Statistics");
+                    Console.WriteLine("5: Back");
+
+                    break;
+
+                case "8":
                     running = false;
                     break;
 
@@ -117,11 +128,11 @@ class Program
 
         if (int.TryParse(choice, out int id))
         {
-            if (applicationsTracker.Jobs.Count >= id)
+            if (applicationsTracker.GetApplications().Count >= id)
             {
-                Console.WriteLine($"{applicationsTracker.Jobs[id - 1].CompanyName} |" +
-                        $" {applicationsTracker.Jobs[id - 1].PositionName} | {applicationsTracker.Jobs[id - 1].Status} |" +
-                        $" {applicationsTracker.Jobs[id - 1].Notes} | {applicationsTracker.Jobs[id - 1].DateApplied.ToString()}");
+                Console.WriteLine($"{applicationsTracker.GetApplications()[id - 1].CompanyName} |" +
+                        $" {applicationsTracker.GetApplications()[id - 1].PositionName} | {applicationsTracker.GetApplications()[id - 1].Status} |" +
+                        $" {applicationsTracker.GetApplications()[id - 1].Notes} | {applicationsTracker.GetApplications()[id - 1].DateApplied.ToString()}");
 
                 Console.WriteLine("Choose a field to edit: ");
                 Console.WriteLine("1: Company Name");

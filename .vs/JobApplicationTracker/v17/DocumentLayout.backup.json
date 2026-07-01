@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Projects\\JobApplicationTracker\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAgwNgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwEYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-09T00:59:55.876Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "ApplicationTracker.cs",
               "ToolTip": "C:\\Projects\\JobApplicationTracker\\ApplicationTracker.cs",
               "RelativeToolTip": "ApplicationTracker.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAIwGsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-12T12:07:42.361Z",
               "EditorCaption": ""
@@ -60,7 +60,8 @@
               "RelativeToolTip": "JobApplication.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T13:52:09.39Z"
+              "WhenOpened": "2026-06-05T13:52:09.39Z",
+              "EditorCaption": ""
             }
           ]
         }
