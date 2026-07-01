@@ -12,3 +12,4 @@ C:\Projects\JobApplicationTracker\obj\Debug\net9.0\refint\JobApplicationTracker.
 C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.pdb
 C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.genruntimeconfig.cache
 C:\Projects\JobApplicationTracker\obj\Debug\net9.0\ref\JobApplicationTracker.dll
+C:\Projects\JobApplicationTracker\obj\Debug\net9.0\JobApplicationTracker.sourcelink.json

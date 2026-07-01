@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace JobApplicationTracker
 {
@@ -12,7 +14,7 @@ namespace JobApplicationTracker
         public List<JobApplication> Jobs = new();
 
         // Initializing an ID so that jobs can be tracked easily
-        private int applicationID = 1;
+        public int applicationID = 1;
 
         // Function to add new applications into the list
         public void AddApplication(string _companyName, string _positionName, DateOnly _dateTime, string _notes)
@@ -26,23 +28,20 @@ namespace JobApplicationTracker
         // function that shows all applications
         public void ViewApplications()
         {
-            if (Jobs.Count > 0)
-            {
-                foreach (var job in Jobs)
-                {
-                    Console.WriteLine($"{job.ID} | " +
-                      $"{job.CompanyName} | " +
-                      $"{job.PositionName} | " +
-                      $"{job.Status} | " +
-                      $"{job.Notes} | " +
-                      $"{job.DateApplied} | ");
-                }
-
-            }
-            else
+            if (!Jobs.Any())
             {
                 Console.WriteLine("Jobs list empty");
                 return;
+            }
+
+            foreach (var job in Jobs)
+            {
+                Console.WriteLine($"{job.ID} | " +
+                  $"{job.CompanyName} | " +
+                  $"{job.PositionName} | " +
+                  $"{job.Status} | " +
+                  $"{job.Notes} | " +
+                  $"{job.DateApplied} | ");
             }
         }
 
@@ -101,6 +100,35 @@ namespace JobApplicationTracker
                     DateOnly.TryParse(_input, out var dateOnly);
                     job.DateApplied = dateOnly;
                     break;
+            }
+        }
+
+        // saves job list to a json file
+        public void SaveToFile(string _filePath)
+        {
+            string jsonData = JsonSerializer.Serialize(Jobs);
+            File.WriteAllText(_filePath, jsonData);
+        }
+
+        // loads and deserialises a json file into a jobs list object
+        public void LoadFromFile(string _filePath)
+        {
+            if (!File.Exists(_filePath))
+            {
+                Console.WriteLine("no save file found.");
+                return;
+            }
+            else
+            {
+                string jsonFile = File.ReadAllText(_filePath);
+
+                // set job list to the deserialised file, if null add a new list
+                Jobs =
+                    JsonSerializer.Deserialize<List<JobApplication>>(jsonFile)
+                    ?? new List<JobApplication>();
+
+                // check applications contains something, if true get the highest ID, increment the new ID from this
+                applicationID = Jobs.Any() ? Jobs.Max(j => j.ID) + 1 : 1;
             }
         }
     }

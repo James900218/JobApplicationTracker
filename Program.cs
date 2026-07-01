@@ -3,19 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Text.Json;
+using System.IO;
 
+
+// This class handles the UI and Console interaction with the classes that hold the app functionality
 class Program
 {
 
     private static ApplicationsTracker applicationsTracker = new();
-    
+
+    private static string filePath = "C:\\Projects\\JobApplicationTracker\\Saved Lists\\";
 
     static void Main()
     {
 
         Console.WriteLine("Hello World");
-
 
         bool running = true;
 
@@ -41,7 +43,6 @@ class Program
 
                 case "2":
                     applicationsTracker.ViewApplications();
-                    Console.WriteLine();
                     break;
 
                 case "3":
@@ -52,11 +53,11 @@ class Program
                     ConsoleEditApplication();             
                     break;
                 case "5":
-
+                    ConsoleSaveToFile();
                     break;
 
                 case "6":
-
+                    ConsoleLoadFromFile();                 
                     break;
 
                 case "7":
@@ -196,6 +197,25 @@ class Program
             Console.WriteLine(); // for empty line in console, formatting
             return;       
         }
+    }
+
+    static public void ConsoleSaveToFile()
+    {
+        // Save a new file in the current file path
+        Console.WriteLine("Save as: ");
+        string? choice = Console.ReadLine();
+        choice = filePath + choice + ".json";
+
+        applicationsTracker.SaveToFile(choice);
+    }
+
+    static public void ConsoleLoadFromFile()
+    {
+        Console.WriteLine("Enter File name: ");
+        string? choice = Console.ReadLine();
+        choice = filePath + choice + ".json";
+
+        applicationsTracker.LoadFromFile(choice);
     }
 
 }

@@ -9,7 +9,7 @@ namespace JobApplicationTracker
     public class JobApplication
     {
         // Integer for keeping track of applications 
-        public int ID { get;}
+        public int ID { get; set; }
 
         // string name of the company applied to
         public string? CompanyName { get; set; }
@@ -19,8 +19,23 @@ namespace JobApplicationTracker
 
         // date of application
         public DateOnly DateApplied { get; set; }
+        public string? Notes { get; set; }
 
-        // 
+        //constructor
+        public JobApplication()
+        {
+
+        }
+        public JobApplication(string _companyName, string _positionName, DateOnly _dateTime, string _notes, ApplicationStatus _status, int _ID)
+        {
+            CompanyName = _companyName;
+            PositionName = _positionName;
+            DateApplied = _dateTime;
+            Status = _status;
+            Notes = _notes;
+            ID = _ID;
+        }
+
         public enum ApplicationStatus
         { 
             Applied,
@@ -31,18 +46,5 @@ namespace JobApplicationTracker
         }
 
         public ApplicationStatus Status { get; set; }
-
-        public string? Notes { get; set; }
-
-        //constructor
-        public JobApplication(string _companyName, string _positionName, DateOnly _dateTime, string _notes, ApplicationStatus _status, int _ID)
-        {
-            CompanyName = _companyName;
-            PositionName = _positionName;
-            DateApplied = _dateTime;
-            Status = _status;
-            Notes = _notes;
-            ID = _ID;
-        }
     }
 }
