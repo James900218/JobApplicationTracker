@@ -23,7 +23,7 @@ class Program
 
         while (running)
         {
-            Console.WriteLine("Welcome! Please select an option from the list below:");
+            Console.WriteLine("\nWelcome! Please select an option from the list below:");
 
             Console.WriteLine("1: Add Application");
             Console.WriteLine("2: View Applications");
@@ -63,11 +63,32 @@ class Program
                     break;
 
                 case "7":
-                    Console.WriteLine("1: Search");
+                    Console.WriteLine("\n1: Search");
                     Console.WriteLine("2: Filter");
                     Console.WriteLine("3: Sort");
                     Console.WriteLine("4: Statistics");
                     Console.WriteLine("5: Back");
+
+                    choiceInput = Console.ReadLine();
+
+                    switch (choiceInput)
+                    {
+                        case "1":
+                            ConsoleSearch();
+                            break;
+                        case "2":
+                            ConsoleFilter();
+                            break;
+                        case "3":
+                            ConsoleSort();
+                            break;
+                        case "4":
+                            ConsoleStatistics();
+                            break;
+                        case "5":
+                            break;
+                    }
+
 
                     break;
 
@@ -84,30 +105,30 @@ class Program
 
     static void ConsoleAddApplication()
     {
-        Console.WriteLine("Enter the Name of the Company");
+        Console.WriteLine("\nEnter the Name of the Company");
         string? companyName = Console.ReadLine();
 
-        Console.WriteLine("Enter the title of the position applied for");
+        Console.WriteLine("\nEnter the title of the position applied for");
         string? roleName = Console.ReadLine();
 
-        Console.WriteLine("Enter the date that you applied to the role (Format dd -space- mm -space- yyyy)");
+        Console.WriteLine("\nEnter the date that you applied to the role (Format dd -space- mm -space- yyyy)");
         string? date = Console.ReadLine();
         DateOnly.TryParse(date, out var dateOnly);
 
-        Console.WriteLine("Enter any notes about the application");
+        Console.WriteLine("\nEnter any notes about the application");
         string? notes = Console.ReadLine();
 
         if (companyName != null && roleName != null && date != null)
         {
             applicationsTracker.AddApplication(companyName, roleName, dateOnly, notes);
         }
-        else Console.WriteLine("Add Application Failed, Invalid Field"); return;
+        else Console.WriteLine("\nAdd Application Failed, Invalid Field\n"); return;
 
     }
 
     static void ConsoleDeleteApplication()
     {
-        Console.WriteLine("Enter the ID of the application you wish to delete");
+        Console.WriteLine("\nEnter the ID of the application you wish to delete");
         string? choiceID = Console.ReadLine();
 
         if (int.TryParse(choiceID, out int id))
@@ -116,14 +137,14 @@ class Program
         }
         else
         {
-            Console.WriteLine("Failed to find job application from the given ID");
+            Console.WriteLine("\nFailed to find job application from the given ID\n");
         }
 
     }
 
     static void ConsoleEditApplication()
     {
-        Console.WriteLine("enter the ID number of the application you wish to edit");
+        Console.WriteLine("\nenter the ID number of the application you wish to edit");
         string? choice = Console.ReadLine();
 
         if (int.TryParse(choice, out int id))
@@ -134,7 +155,7 @@ class Program
                         $" {applicationsTracker.GetApplications()[id - 1].PositionName} | {applicationsTracker.GetApplications()[id - 1].Status} |" +
                         $" {applicationsTracker.GetApplications()[id - 1].Notes} | {applicationsTracker.GetApplications()[id - 1].DateApplied.ToString()}");
 
-                Console.WriteLine("Choose a field to edit: ");
+                Console.WriteLine("\nChoose a field to edit: ");
                 Console.WriteLine("1: Company Name");
                 Console.WriteLine("2: Position Name");
                 Console.WriteLine("3: Status");
@@ -150,22 +171,22 @@ class Program
                     switch (choiceID)
                     {
                         default:
-                            Console.WriteLine("Invalid Choice");
+                            Console.WriteLine("\nInvalid Choice\n");
                             break;
                         case 1: // 1: change Company Name
-                            Console.WriteLine("Enter new Company Name:");
+                            Console.WriteLine("\nEnter new Company Name:");
                             choice = Console.ReadLine();
                             if (choice != null) applicationsTracker.EditApplication(id, choiceID, choice);
                             break;
 
                         case 2: // 2: change Position Name
-                            Console.WriteLine("Enter new Position Name:");
+                            Console.WriteLine("\nEnter new Position Name:");
                             choice = Console.ReadLine();
                             if (choice != null) applicationsTracker.EditApplication(id, choiceID, choice);
                             break;
 
                         case 3: // 3: Change Application Status
-                            Console.WriteLine("Enter the number from the options below:");
+                            Console.WriteLine("\nEnter the number from the options below:");
                             Console.WriteLine("0: Applied");
                             Console.WriteLine("1: Interview");
                             Console.WriteLine("2: Rejected");
@@ -176,12 +197,12 @@ class Program
                             break;
 
                         case 4: // 4: Change Application Notes
-                            Console.WriteLine("Enter new Notes:");
+                            Console.WriteLine("\nEnter new Notes:");
                             choice = Console.ReadLine();
                             if (choice != null) applicationsTracker.EditApplication(id, choiceID, choice);
                             break;
                         case 5: // 5: Change application date
-                            Console.WriteLine("Enter new date, format (dd -space- mm -space- yyyy):");
+                            Console.WriteLine("\nEnter new date, format (dd -space- mm -space- yyyy):");
                             choice = Console.ReadLine();
                             if (choice != null) applicationsTracker.EditApplication(id, choiceID, choice);
                             break;
@@ -213,7 +234,7 @@ class Program
     static public void ConsoleSaveToFile()
     {
         // Save a new file in the current file path
-        Console.WriteLine("Save as: ");
+        Console.WriteLine("\nSave as: ");
         string? choice = Console.ReadLine();
         choice = filePath + choice + ".json";
 
@@ -222,11 +243,93 @@ class Program
 
     static public void ConsoleLoadFromFile()
     {
-        Console.WriteLine("Enter File name: ");
+        Console.WriteLine("\nEnter File name: ");
         string? choice = Console.ReadLine();
         choice = filePath + choice + ".json";
 
         applicationsTracker.LoadFromFile(choice);
+    }
+
+    static public void ConsoleSearch()
+    {
+        Console.WriteLine("\nEnter your search: ");
+        string? choice = Console.ReadLine();
+
+        if (string.IsNullOrEmpty(choice))
+        {
+            Console.WriteLine("\nInvalid Search\n");
+            return;
+        }
+
+        JobApplication? searchResult = applicationsTracker.SearchList(choice);
+
+        if (searchResult != null)
+        {
+            Console.WriteLine($"{searchResult.ID} | " +
+            $"{searchResult.CompanyName} | " +
+            $"{searchResult.PositionName} | " +
+            $"{searchResult.Status} | " +
+            $"{searchResult.Notes} | " +
+            $"{searchResult.DateApplied} | ");
+        }
+        else Console.WriteLine("\nSearch result not found\n");
+
+            return;
+    }
+
+    static public void ConsoleFilter()
+    {
+        Console.WriteLine("\nEnter Filter Option:");
+        Console.WriteLine("1: Applied");
+        Console.WriteLine("2: Interview");
+        Console.WriteLine("3: Rejected");
+        Console.WriteLine("4: Offer");
+
+        string? choice = Console.ReadLine();
+
+        switch(choice)
+        {
+            default:
+                Console.WriteLine("\nInvalid Input\n");
+                break;
+
+            case "1" or "Applied":
+                applicationsTracker.FilterList(JobApplication.ApplicationStatus.Applied);
+                break;
+
+            case "2" or "Interview":
+                applicationsTracker.FilterList(JobApplication.ApplicationStatus.Interview);
+                break;
+
+            case "3" or "Rejected":
+                applicationsTracker.FilterList(JobApplication.ApplicationStatus.Rejected);
+                break;
+
+            case "4" or "Offer":
+                applicationsTracker.FilterList(JobApplication.ApplicationStatus.Offer);
+                break;
+
+
+        }
+
+        return;
+    }
+
+    static public void ConsoleSort()
+    {
+        Console.WriteLine("\nSort by: ");
+        Console.WriteLine("1: Date Applied ");
+        Console.WriteLine("2: Company ");
+        Console.WriteLine("3: Status ");
+
+        string? choice = Console.ReadLine();
+
+        applicationsTracker.SortList(choice);
+    }
+
+    static public void ConsoleStatistics()
+    {
+
     }
 
 }

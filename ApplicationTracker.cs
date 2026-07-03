@@ -33,20 +33,20 @@ namespace JobApplicationTracker
         // function that shows all applications
         public void ViewApplications()
         {
-            if (!Jobs.Any())
+            if (Jobs.Count == 0)
             {
-                Console.WriteLine("Jobs list empty");
+                Console.WriteLine("\nJobs list empty\n");
                 return;
             }
 
             foreach (var job in Jobs)
             {
-                Console.WriteLine($"{job.ID} | " +
+                Console.WriteLine($"\n{job.ID} | " +
                   $"{job.CompanyName} | " +
                   $"{job.PositionName} | " +
                   $"{job.Status} | " +
                   $"{job.Notes} | " +
-                  $"{job.DateApplied} | ");
+                  $"{job.DateApplied} | \n");
             }
         }
 
@@ -69,7 +69,7 @@ namespace JobApplicationTracker
 
             if (job == null)
             {
-                Console.WriteLine("Job not found");
+                Console.WriteLine("\nJob not found\n");
                 return;
             }
 
@@ -92,7 +92,7 @@ namespace JobApplicationTracker
                     }
                     else
                     {
-                        Console.WriteLine("Failed to read choice number");
+                        Console.WriteLine("\nFailed to read choice number\n");
                         Console.WriteLine(); // for empty line in console, formatting
                     }
 
@@ -120,7 +120,7 @@ namespace JobApplicationTracker
         {
             if (!File.Exists(_filePath))
             {
-                Console.WriteLine("no save file found.");
+                Console.WriteLine("\nno save file found.\n");
                 return;
             }
             else
@@ -135,6 +135,97 @@ namespace JobApplicationTracker
                 // check applications contains something, if true get the highest ID, increment the new ID from this
                 applicationID = Jobs.Any() ? Jobs.Max(j => j.ID) + 1 : 1;
             }
+        }
+
+        public JobApplication? SearchList(string _choice)
+        {
+            // Empty JobApplication
+            JobApplication result = new();
+
+            // Check list conatins any elements
+            if (Jobs.Count > 0)
+            {
+                // does the input match any company names in the list, if not check position names
+                if (Jobs.Any(j => j.CompanyName == _choice))
+                {
+                    result = Jobs.FirstOrDefault(j => j.CompanyName == _choice);
+                    return result;
+                }
+                else if (Jobs.Any(j => j.PositionName == _choice))
+                {
+                    result = Jobs.FirstOrDefault(j => j.PositionName == _choice);
+                    return result;
+                }
+
+
+            }
+            
+
+            return null;
+        }
+
+        public void FilterList(JobApplication.ApplicationStatus _status)
+        {
+            // Check the list has any elements in it
+            if (Jobs.Count > 0)
+            {
+                List<JobApplication> filteredJobs = new();
+
+                // Store filtered results
+                IEnumerable<JobApplication> query = Jobs.Where(j => j.Status == _status);
+
+                // unless empty
+                if (query.Any())
+                {
+                    // add them to a new list
+                    foreach (JobApplication jobApplication in query)
+                    {
+                        filteredJobs.Add(jobApplication);
+                    }
+
+                    // Print to console
+                    foreach (JobApplication job in filteredJobs)
+                    {
+                        Console.WriteLine($"\n{job.ID} | " +
+                        $"{job.CompanyName} | " +
+                        $"{job.PositionName} | " +
+                        $"{job.Status} | " +
+                        $"{job.Notes} | " +
+                        $"{job.DateApplied} | \n");
+                    }
+                }
+                else Console.WriteLine("\nNo Applications Found");
+
+
+                    return;
+            }
+
+            Console.WriteLine("Filter Result Failed");
+            return;
+        }
+
+        public void SortList(string _choice)
+        {
+            if (!string.IsNullOrEmpty(_choice))
+            {
+                switch (_choice)
+                {
+                    default:
+                        break;
+                    case "1" or "Date":
+                        break;
+                    case "2" or "Company":
+                        break;
+                    case "3" or "Status":
+                        break;
+
+                }
+            }
+        }
+
+        public void ApplicationStatistics()
+        {
+
         }
     }
 }
