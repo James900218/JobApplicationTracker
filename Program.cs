@@ -329,7 +329,7 @@ class Program
 
     static public void ConsoleStatistics()
     {
-
+        Console.WriteLine(applicationsTracker.ApplicationStatistics());
     }
 
 }

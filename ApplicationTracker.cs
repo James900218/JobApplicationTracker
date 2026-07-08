@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Security.Permissions;
 
 namespace JobApplicationTracker
 {
@@ -206,6 +207,8 @@ namespace JobApplicationTracker
 
         public void SortList(string _choice)
         {
+            IEnumerable<JobApplication> sortedJobs;
+
             if (!string.IsNullOrEmpty(_choice))
             {
                 switch (_choice)
@@ -213,19 +216,74 @@ namespace JobApplicationTracker
                     default:
                         break;
                     case "1" or "Date":
+                        sortedJobs = Jobs.OrderBy(j => j.DateApplied);
+
+                        foreach (JobApplication job in sortedJobs)
+                        {
+                            Console.WriteLine($"\n{job.ID} | " +
+                            $"{job.CompanyName} | " +
+                            $"{job.PositionName} | " +
+                            $"{job.Status} | " +
+                            $"{job.Notes} | " +
+                            $"{job.DateApplied} | \n");
+                        }
+
                         break;
+
                     case "2" or "Company":
+                        sortedJobs = Jobs.OrderBy(j => j.CompanyName);
+
+                        foreach (JobApplication job in sortedJobs)
+                        {
+                            Console.WriteLine($"\n{job.ID} | " +
+                            $"{job.CompanyName} | " +
+                            $"{job.PositionName} | " +
+                            $"{job.Status} | " +
+                            $"{job.Notes} | " +
+                            $"{job.DateApplied} | \n");
+                        }
                         break;
+
                     case "3" or "Status":
+                        sortedJobs = Jobs.OrderBy(j => j.Status);
+
+                        foreach (JobApplication job in sortedJobs)
+                        {
+                            Console.WriteLine($"\n{job.ID} | " +
+                            $"{job.CompanyName} | " +
+                            $"{job.PositionName} | " +
+                            $"{job.Status} | " +
+                            $"{job.Notes} | " +
+                            $"{job.DateApplied} | \n");
+                        }
                         break;
+
 
                 }
             }
         }
 
-        public void ApplicationStatistics()
+        public string ApplicationStatistics()
         {
+            string result = "";
 
+            result += "\nTotal Applications | " + Jobs.Count.ToString();
+            result += "\nInterviews | " + Jobs.Count(j => j.Status == JobApplication.ApplicationStatus.Interview).ToString();
+            result += "\nOffers | " + Jobs.Count(j => j.Status == JobApplication.ApplicationStatus.Offer).ToString();
+            result += "\nRejected | " + Jobs.Count(j => j.Status == JobApplication.ApplicationStatus.Rejected).ToString();
+
+            // num of responses
+            // divide by total
+            // multiply by 100
+
+            int responses = Jobs.Count(j =>
+                j.Status == JobApplication.ApplicationStatus.Offer ||
+                j.Status == JobApplication.ApplicationStatus.Interview);
+
+            int percentage = (responses * 100) / Jobs.Count;
+            result += "\nResponse Rate | " + percentage.ToString();
+
+            return result;
         }
     }
 }
