@@ -12,14 +12,14 @@ namespace JobApplicationTracker
         public int ID { get; set; }
 
         // string name of the company applied to
-        public string? CompanyName { get; set; }
+        public string? CompanyName { get; set; } = "";
 
         // srting name of the position applied to
-        public string? PositionName { get; set; }
+        public string? PositionName { get; set; } = "";
 
         // date of application
         public DateOnly DateApplied { get; set; }
-        public string? Notes { get; set; }
+        public string? Notes { get; set; } = "";
 
         //constructor
         public JobApplication()

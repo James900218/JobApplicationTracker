@@ -23,6 +23,9 @@ class Program
 
         while (running)
         {
+            using var db = new ApplicationDbContext();
+
+            Console.WriteLine(db.Applications.Count());
             Console.WriteLine("\nWelcome! Please select an option from the list below:");
 
             Console.WriteLine("1: Add Application");
